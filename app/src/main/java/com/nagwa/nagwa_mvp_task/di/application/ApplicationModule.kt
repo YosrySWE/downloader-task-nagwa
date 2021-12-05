@@ -6,10 +6,13 @@ import android.app.Application
 import android.preference.PreferenceManager
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import com.nagwa.nagwa_mvp_task.data.AppApiHelper
+import com.nagwa.nagwa_mvp_task.data.remote.AppApiHelper
 import com.nagwa.nagwa_mvp_task.data.AppDataManager
 import com.nagwa.nagwa_mvp_task.data.DataManager
-import com.nagwa.nagwa_mvp_task.data.sharedHelper.AppSharedHelper
+import com.nagwa.nagwa_mvp_task.data.local.DownloadedAttachmentDao
+import com.nagwa.nagwa_mvp_task.data.local.repository.DownloadAttachmentDataSource
+import com.nagwa.nagwa_mvp_task.data.local.repository.DownloadAttachmentRepository
+import com.nagwa.nagwa_mvp_task.data.local.sharedHelper.AppSharedHelper
 import com.nagwa.nagwa_mvp_task.di.qualifiers.NormalRetro
 import com.nagwa.nagwa_mvp_task.di.qualifiers.ServerUrl
 import com.nagwa.nagwa_mvp_task.utils.Var
@@ -56,9 +59,10 @@ class ApplicationModule(var application: Application) {
     @Singleton
     fun provideDataManager(
         appApiHelper: AppApiHelper,
-        appSharedHelper: AppSharedHelper
+        appSharedHelper: AppSharedHelper,
+        repository: DownloadAttachmentDataSource
     ): DataManager {
-        return AppDataManager(appApiHelper, appSharedHelper)
+        return AppDataManager(appApiHelper, repository,appSharedHelper)
     }
 
 
@@ -69,6 +73,13 @@ class ApplicationModule(var application: Application) {
         return AppSharedHelper(shared)
     }
 
+    @Provides
+    @Singleton
+    fun provideDownloadAttachmentRepository(
+        downloadedAttachmentDao: DownloadedAttachmentDao
+    ): DownloadAttachmentDataSource {
+        return DownloadAttachmentDataSource(downloadedAttachmentDao)
+    }
 
     @Provides
     @Singleton
@@ -80,6 +91,8 @@ class ApplicationModule(var application: Application) {
             normalRetrofit,
         )
     }
+
+
 
 
 }

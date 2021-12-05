@@ -17,4 +17,11 @@
     <style name="AppTheme.Launcher">
         <item name="android:windowBackground">@drawable/launch_screen</item>
     </style>
+
+    <style name="MiniHeader">
+        <item name="android:textSize">@dimen/HomeMiniTextSize</item>
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
+
 </resources>

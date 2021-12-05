@@ -48,7 +48,7 @@ class NagwaApp : Application() {
 
         applicationComponent = DaggerApplicationComponent.builder()
             .applicationModule(ApplicationModule(this))
-//            .roomModule(RoomModule(this))
+            .roomModule(RoomModule(this))
             .build()
         applicationComponent.inject(this)
 

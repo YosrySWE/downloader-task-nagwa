@@ -1,6 +1,6 @@
-package com.nagwa.nagwa_mvp_task.data.retrofit
+package com.nagwa.nagwa_mvp_task.data.remote.retrofit
 
-import com.nagwa.nagwa_mvp_task.data.models.AttachmentResponse
+import com.nagwa.nagwa_mvp_task.data.remote.models.AttachmentResponse
 import io.reactivex.Observable
 import retrofit2.http.GET
 

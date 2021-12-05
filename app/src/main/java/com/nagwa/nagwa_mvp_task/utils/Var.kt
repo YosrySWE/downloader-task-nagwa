@@ -6,6 +6,8 @@ class Var {
 
         const val BASE_URL = "https://my-json-server.typicode.com/"
 
+        const val DATABASE_NAME = "nagwa_task.db"
+
     }
 
 }

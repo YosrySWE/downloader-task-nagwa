@@ -2,6 +2,104 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/darkGray">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Download List:"
+        android:id="@+id/titleTv"
+        android:layout_marginHorizontal="@dimen/_8sdp"
+        android:textAppearance="@style/MiniHeader"
+
+        android:textColor="@color/offWhite"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:textSize="@dimen/_16sdp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Download"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/titleTv"
+        app:layout_constraintBottom_toBottomOf="@+id/titleTv"
+        android:background="@drawable/fill_rec24_white_border_red"
+        android:paddingHorizontal="@dimen/_8sdp"
+        android:id="@+id/startDownloadBtn"/>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/swipeRefresher"
+        android:layout_marginTop="@dimen/_16sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleTv">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/resultsRv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            tools:itemCount="2"
+            android:layout_marginTop="@dimen/_8sdp"
+            tools:listitem="@layout/row_download_attachment"
+
+
+            />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/page2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="@dimen/_16sdp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/titleTv">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="@dimen/_120sdp"
+                android:layout_gravity="center"
+
+                android:src="@drawable/nagwa_logo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_16sdp"
+                android:textColor="@color/black"
+                android:text="Your Download List is Empty"
+                android:textSize="@dimen/_18sdp"
+                app:fontFamily="@font/row_title_font_family" />
+
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

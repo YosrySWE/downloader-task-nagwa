@@ -1,7 +1,7 @@
-package com.nagwa.nagwa_mvp_task.data
+package com.nagwa.nagwa_mvp_task.data.remote
 
-import com.nagwa.nagwa_mvp_task.data.models.AttachmentResponse
-import com.nagwa.nagwa_mvp_task.data.retrofit.ApiInterface
+import com.nagwa.nagwa_mvp_task.data.remote.models.AttachmentResponse
+import com.nagwa.nagwa_mvp_task.data.remote.retrofit.ApiInterface
 import com.nagwa.nagwa_mvp_task.di.qualifiers.NormalRetro
 import io.reactivex.Observable
 import retrofit2.Retrofit
