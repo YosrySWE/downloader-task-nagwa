@@ -9,7 +9,7 @@ import com.nagwa.nagwa_mvp_task.NagwaApp
 import com.nagwa.nagwa_mvp_task.di.activity.ActivityComponent
 import com.nagwa.nagwa_mvp_task.di.activity.ActivityModule
 import com.nagwa.nagwa_mvp_task.di.activity.DaggerActivityComponent
-import com.nagwa.nagwa_mvp_task.ui.activities.MainActivity
+import com.nagwa.nagwa_mvp_task.ui.activities.main.MainActivity
 import com.nagwa.nagwa_mvp_task.utils.freezeB
 import com.nagwa.nagwa_mvp_task.utils.unFreezeB
 import javax.inject.Inject

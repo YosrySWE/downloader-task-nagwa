@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.nagwa.nagwa_mvp_task.data.DataManager
 import com.nagwa.nagwa_mvp_task.di.rx.AppSchedulerProvider
 import com.nagwa.nagwa_mvp_task.di.rx.SchedulerProvider
-import com.nagwa.nagwa_mvp_task.ui.activities.MainContract
-import com.nagwa.nagwa_mvp_task.ui.activities.MainPresenter
+import com.nagwa.nagwa_mvp_task.ui.activities.main.MainContract
+import com.nagwa.nagwa_mvp_task.ui.activities.main.MainPresenter
+import com.nagwa.nagwa_mvp_task.ui.fragments.downloads.DownloadsContract
+import com.nagwa.nagwa_mvp_task.ui.fragments.downloads.DownloadsPresenter
 import com.nagwa.nagwa_mvp_task.ui.fragments.home.HomeContract
 import com.nagwa.nagwa_mvp_task.ui.fragments.home.HomePresenter
 import dagger.Module
@@ -48,4 +50,12 @@ class ActivityModule(var mActivity: AppCompatActivity) {
     }
 
 
+    @Provides
+    fun provideDownloadsPresenter(
+        dataManager: DataManager,
+        compositeDisposable: CompositeDisposable,
+        schedulerProvider: SchedulerProvider
+    ): DownloadsContract.Presenter {
+        return DownloadsPresenter(dataManager, compositeDisposable, schedulerProvider)
+    }
 }

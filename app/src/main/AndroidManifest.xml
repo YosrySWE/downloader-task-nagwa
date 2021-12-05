@@ -12,7 +12,7 @@
         android:name=".NagwaApp"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.activities.MainActivity"
+            android:name=".ui.activities.main.MainActivity"
             android:theme="@style/AppTheme.Launcher"
             android:exported="true">
             <intent-filter>

@@ -13,5 +13,24 @@ class HomePresenter(
     val schedulerProvider: SchedulerProvider
 ) :
     BasePresenter<HomeContract.View>(compositeDisposable), HomeContract.Presenter {
+    override fun fetchFakeResponse() {
+        view?.startLoading()
+        compositeDisposable.add(
+            dataManager.getVideoAndBooks()
+                .subscribeOn(schedulerProvider.io())
+                .observeOn(schedulerProvider.ui())
+                .subscribe({
+                    view?.stopLoading()
+                           if(it != null){
+                               view?.onResponseFetchedSuccessfully(it.results)
+                           }else{
+                               view?.onResponseFetchedFailed("error")
+                           }
+                },{
+                    view?.stopLoading()
+                    view?.onResponseFetchedFailed("exception")
+                })
+        )
+    }
 
 }

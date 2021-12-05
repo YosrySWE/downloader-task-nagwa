@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.nagwa.nagwa_mvp_task.R
+import com.nagwa.nagwa_mvp_task.data.models.AttachmentModel
 import com.nagwa.nagwa_mvp_task.databinding.FragmentHomeBinding
 import com.nagwa.nagwa_mvp_task.ui.base.BaseFragment
 
@@ -31,6 +32,8 @@ class HomeFragment : BaseFragment<HomeContract.Presenter>(), HomeContract.View {
     override fun init(savedInstanceState: Bundle?, view: View) {
         presenter.attach(this)
 
+        presenter.fetchFakeResponse()
+
 
     }
 
@@ -41,6 +44,22 @@ class HomeFragment : BaseFragment<HomeContract.Presenter>(), HomeContract.View {
 
     override fun injectDependencies() {
         baseActivity?.activityComponent?.inject(this)
+    }
+
+    override fun onResponseFetchedSuccessfully(results: MutableList<AttachmentModel>) {
+        showToast("$results")
+    }
+
+    override fun onResponseFetchedFailed(message: String) {
+        showToast(message)
+    }
+
+    override fun startLoading() {
+        startDimLoading()
+    }
+
+    override fun stopLoading() {
+        stopDimLoading()
     }
 
 
