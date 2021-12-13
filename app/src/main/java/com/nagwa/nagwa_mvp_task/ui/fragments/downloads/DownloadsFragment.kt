@@ -33,6 +33,7 @@ class DownloadsFragment : BaseFragment<DownloadsContract.Presenter>(), Downloads
     private val UNKNOWN_DOWNLOADED_BYTES_PER_SECOND: Long = 0
     private val GROUP_ID = "listGroup".hashCode()
 
+
     val cachedData : MutableList<DownloadedAttachmentEntity> = mutableListOf()
     lateinit var adapter: FileAdapter
     lateinit var fetch: Fetch
